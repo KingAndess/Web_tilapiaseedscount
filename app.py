@@ -14,8 +14,7 @@ import tempfile
 app = Flask(__name__)
 
 # Path model
-MODEL_PATH = os.environ.get('MODEL_PATH', r'D:\SKRIPSI\Skripsi Andes\KodinganSkripsi\skripsi\Web\Tilapiaseedscount_Web\models\E50B4\weights\best.pt')
-MODEL_PATH = os.path.join(os.getcwd(), MODEL_PATH)
+MODEL_PATH = './models/best.pt'
 
 # Check ultralytics version
 try:
@@ -48,8 +47,8 @@ model = load_model()
 # Preprocess image
 def preprocess_image(image):
     # Ubah format gambar ke RGB
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    print(f"Image shape (after BGR to RGB conversion): {image.shape}")
+    # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    # print(f"Image shape (after BGR to RGB conversion): {image.shape}")
 
     # Resize gambar ke size yang diharapkan model, misalnya 640x640
     image = cv2.resize(image, (640, 640))
@@ -283,4 +282,4 @@ def detect_video():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
