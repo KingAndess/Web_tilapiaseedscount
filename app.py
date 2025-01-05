@@ -47,8 +47,8 @@ model = load_model()
 # Preprocess image
 def preprocess_image(image):
     # Ubah format gambar ke RGB
-    # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    # print(f"Image shape (after BGR to RGB conversion): {image.shape}")
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    print(f"Image shape (after BGR to RGB conversion): {image.shape}")
 
     # Resize gambar ke size yang diharapkan model, misalnya 640x640
     image = cv2.resize(image, (640, 640))
